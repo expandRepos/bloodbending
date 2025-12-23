@@ -11,25 +11,11 @@ namespace TopDownController2D.Scripts.TopDownCharacter2D.Animations
         
         [SerializeField] private bool createDustOnWalk = true;
         [SerializeField] private ParticleSystem dustParticleSystem;
-        
-        private HealthSystem _healthSystem;
-        
-        protected override void Awake()
-        {
-            base.Awake();
-            _healthSystem = GetComponent<HealthSystem>();
-        }
 
         protected void Start()
         {
             controller.OnAttackEvent.AddListener(_ => Attacking());
             controller.OnMoveEvent.AddListener(Move);
-
-            if (_healthSystem != null)
-            {
-                _healthSystem.OnDamage.AddListener(Hurt);
-                _healthSystem.OnInvincibilityEnd.AddListener(InvincibilityEnd);
-            }
         }
 
         /// <summary>

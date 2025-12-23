@@ -16,14 +16,11 @@ namespace TopDownCharacter2D.FX
     {
         [SerializeField] private List<Effect> effects;
         private TopDownCharacterController _controller;
-
-        private HealthSystem _healthSystem;
         private PickupItem _pickup;
 
         private void Awake()
         {
             _pickup = GetComponent<PickupItem>();
-            _healthSystem = GetComponent<HealthSystem>();
             _controller = GetComponent<TopDownCharacterController>();
         }
 
@@ -32,14 +29,6 @@ namespace TopDownCharacter2D.FX
             if (_pickup != null)
             {
                 TryAddListener(_pickup.OnPickup, TriggerEvents.Pickup);
-            }
-
-            if (_healthSystem != null)
-            {
-                TryAddListener(_healthSystem.OnDamage, TriggerEvents.Damage);
-                TryAddListener(_healthSystem.OnDeath, TriggerEvents.Death);
-                TryAddListener(_healthSystem.OnHeal, TriggerEvents.Heal);
-                TryAddListener(_healthSystem.OnInvincibilityEnd, TriggerEvents.InvincibilityEnd);
             }
 
             if (_controller != null)

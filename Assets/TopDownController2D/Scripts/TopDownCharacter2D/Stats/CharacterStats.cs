@@ -19,9 +19,6 @@ namespace TopDownCharacter2D.Stats
     {
         public StatsChangeType statsChangeType;
 
-        [Range(0, 100)] [Tooltip("The max health of the character")]
-        public int maxHealth;
-
         [Range(0f, 20f)] [Tooltip("The movement speed of the character")]
         public float speed;
 

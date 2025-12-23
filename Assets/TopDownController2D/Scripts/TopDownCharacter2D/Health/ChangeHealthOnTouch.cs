@@ -12,19 +12,7 @@ namespace TopDownCharacter2D.Health
 
         [Tooltip("The tag of the target of the health change")] [SerializeField]
         private string targetTag;
-
-        private HealthSystem _collidingTargetHealthSystem;
         private TopDownKnockBack _collidingTargetKnockBackSystem;
-
-        private bool _isCollidingWithTarget;
-
-        private void FixedUpdate()
-        {
-            if (_isCollidingWithTarget)
-            {
-                ApplyHealthChange();
-            }
-        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -35,37 +23,7 @@ namespace TopDownCharacter2D.Health
                 return;
             }
 
-            _collidingTargetHealthSystem = receiver.GetComponent<HealthSystem>();
-            if (_collidingTargetHealthSystem != null)
-            {
-                _isCollidingWithTarget = true;
-            }
-
             _collidingTargetKnockBackSystem = receiver.GetComponent<TopDownKnockBack>();
-        }
-
-
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (!collision.CompareTag(targetTag))
-            {
-                return;
-            }
-
-            _isCollidingWithTarget = false;
-        }
-
-        /// <summary>
-        ///     Apply the change of health to the target
-        /// </summary>
-        private void ApplyHealthChange()
-        {
-            bool hasBeenChanged = _collidingTargetHealthSystem.ChangeHealth(value);
-
-            if (_collidingTargetKnockBackSystem != null && hasBeenChanged)
-            {
-                _collidingTargetKnockBackSystem.ApplyKnockBack(transform);
-            }
         }
     }
 }

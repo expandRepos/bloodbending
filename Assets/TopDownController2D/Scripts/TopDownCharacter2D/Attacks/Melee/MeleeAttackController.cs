@@ -45,16 +45,7 @@ namespace TopDownCharacter2D.Attacks.Melee
         {
             if (attackConfig.target.value == (attackConfig.target.value | (1 << other.gameObject.layer)))
             {
-                HealthSystem health = other.gameObject.GetComponent<HealthSystem>();
-                if (health != null)
-                {
-                    health.ChangeHealth(-attackConfig.power);
-                    TopDownKnockBack knockBack = other.gameObject.GetComponent<TopDownKnockBack>();
-                    if (knockBack != null)
-                    {
-                        knockBack.ApplyKnockBack(transform);
-                    }
-                }
+                
             }
         }
 

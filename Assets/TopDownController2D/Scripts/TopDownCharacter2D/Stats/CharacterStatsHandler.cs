@@ -72,7 +72,6 @@ namespace TopDownCharacter2D.Stats
         /// <param name="newModifier"> The stat modifier to apply </param>
         private void UpdateStats(Func<float, float, float> operation, CharacterStats newModifier)
         {
-            CurrentStats.maxHealth = (int) operation(CurrentStats.maxHealth, newModifier.maxHealth);
             CurrentStats.speed = operation(CurrentStats.speed, newModifier.speed);
             if (newModifier.attackConfig == null || CurrentStats.attackConfig == null)
             {
@@ -126,7 +125,6 @@ namespace TopDownCharacter2D.Stats
                 ? MinAttackSpeed
                 : CurrentStats.attackConfig.speed;
             CurrentStats.speed = CurrentStats.speed < MinSpeed ? MinSpeed : CurrentStats.speed;
-            CurrentStats.maxHealth = CurrentStats.maxHealth < MinMaxHealth ? MinMaxHealth : CurrentStats.maxHealth;
         }
 
         /// <summary>

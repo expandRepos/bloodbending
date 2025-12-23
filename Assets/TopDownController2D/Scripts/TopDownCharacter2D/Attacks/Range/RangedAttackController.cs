@@ -62,10 +62,7 @@ namespace TopDownCharacter2D.Attacks.Range
             }
             else if (_config.target.value == (_config.target.value | (1 << other.gameObject.layer)))
             {
-                HealthSystem health = other.gameObject.GetComponent<HealthSystem>();
-                if (health != null)
                 {
-                    health.ChangeHealth(-_config.power);
                     TopDownKnockBack knockBack = other.gameObject.GetComponent<TopDownKnockBack>();
                     if (knockBack != null)
                     {
